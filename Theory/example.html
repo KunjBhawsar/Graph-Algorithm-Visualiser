@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solved Examples - Algorithm Visualizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #a3a3cc;
+            color: #222;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background: #a5a5c9;
+            padding: 20px 12px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        #sidebar h3 {
+            margin-bottom: 16px;
+            color: #000000;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #sidebar h3:hover {
+            color: #5c5c99;
+        }
+
+        #sidebar button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background: #292966;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        #sidebar button:hover {
+            background: #5c5c99;
+        }
+
+        #container {
+            margin-left: 240px;
+            max-width: 1200px;
+        }
+
+        .content-section {
+            margin: 18px 0;
+            padding: 24px;
+            background: #ceceeb;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            color: #000000;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #292966;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #292966;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .graph-diagram {
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .result {
+            color: #ddd;
+            background: #292966;
+            border: 1px solid #292966;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #292966;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h3 onclick="window.location.href='index.html'">Home</h3>
+        <button onclick="window.location.href='bfs.html'">BFS</button>
+        <button onclick="window.location.href='dfs.html'">DFS</button>
+        <button onclick="window.location.href='prim.html'">Prim's Algorithm</button>
+        <button onclick="window.location.href='kruskal.html'">Kruskal's Algorithm</button>
+    </div>
+
+    <div id="container">
+        <div class="content-section">
+            <h1>Solved Examples</h1>
+
+            <h2>1. BFS Example</h2>
+            <h3>Problem:</h3>
+            <p>Perform BFS traversal on the following graph starting from vertex 1:</p>
+            
+            <div class="graph-diagram">
+                Graph Edges: 1→2, 1→3, 2→4, 3→4, 3→5, 4→5
+            </div>
+
+            <h3>Solution:</h3>
+            <div class="step">Step 1: Start at vertex 1. Queue: [1], Visited: {1}</div>
+            <div class="step">Step 2: Dequeue 1, explore neighbors 2 and 3. Queue: [2, 3], Visited: {1, 2, 3}</div>
+            <div class="step">Step 3: Dequeue 2, explore neighbor 4. Queue: [3, 4], Visited: {1, 2, 3, 4}</div>
+            <div class="step">Step 4: Dequeue 3, explore neighbor 5 (4 already visited). Queue: [4, 5], Visited: {1, 2, 3, 4, 5}</div>
+            <div class="step">Step 5: Dequeue 4, no new neighbors. Queue: [5], Visited: {1, 2, 3, 4, 5}</div>
+            <div class="step">Step 6: Dequeue 5, no neighbors. Queue: [], Visited: {1, 2, 3, 4, 5}</div>
+            
+            <div class="result">BFS Traversal Order: 1 → 2 → 3 → 4 → 5</div>
+
+            <h2>2. DFS Example</h2>
+            <h3>Problem:</h3>
+            <p>Perform DFS traversal on the same graph starting from vertex 1:</p>
+            
+            <div class="graph-diagram">
+                Graph Edges: 1→2, 1→3, 2→4, 3→4, 3→5, 4→5
+            </div>
+
+            <h3>Solution:</h3>
+            <div class="step">Step 1: Start at 1, mark visited. Visited: {1}</div>
+            <div class="step">Step 2: Visit neighbor 2 from 1. Visited: {1, 2}</div>
+            <div class="step">Step 3: Visit neighbor 4 from 2. Visited: {1, 2, 4}</div>
+            <div class="step">Step 4: Visit neighbor 5 from 4. Visited: {1, 2, 4, 5}</div>
+            <div class="step">Step 5: Backtrack to 4, then 2, then 1</div>
+            <div class="step">Step 6: Visit neighbor 3 from 1. Visited: {1, 2, 4, 5, 3}</div>
+            
+            <div class="result">DFS Traversal Order: 1 → 2 → 4 → 5 → 3</div>
+
+            <h2>3. Prim's Algorithm Example</h2>
+            <h3>Problem:</h3>
+            <p>Find the Minimum Spanning Tree using Prim's algorithm starting from vertex A:</p>
+            
+            <div class="graph-diagram">
+                Weighted Edges:<br>
+                A-B: 4, A-C: 3<br>
+                B-C: 1, B-D: 2<br>
+                C-D: 4, D-E: 2<br>
+                C-E: 5
+            </div>
+
+            <h3>Solution:</h3>
+            <table>
+                <tr>
+                    <th>Step</th>
+                    <th>Action</th>
+                    <th>MST Edges</th>
+                    <th>Total Cost</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Start at A. Add edges A-B(4), A-C(3) to PQ</td>
+                    <td>-</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Select A-C(3). Add C to MST</td>
+                    <td>A-C</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Add edges from C: C-B(1), C-D(4), C-E(5)</td>
+                    <td>A-C</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Select C-B(1). Add B to MST</td>
+                    <td>A-C, C-B</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Add edge B-D(2)</td>
+                    <td>A-C, C-B</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Select B-D(2). Add D to MST</td>
+                    <td>A-C, C-B, B-D</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Add edge D-E(2)</td>
+                    <td>A-C, C-B, B-D</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Select D-E(2). Add E to MST</td>
+                    <td>A-C, C-B, B-D, D-E</td>
+                    <td>8</td>
+                </tr>
+            </table>
+            
+            <div class="result">MST Edges: A-C(3), C-B(1), B-D(2), D-E(2) | Total Cost: 8</div>
+
+            <h2>4. Kruskal's Algorithm Example</h2>
+            <h3>Problem:</h3>
+            <p>Find the Minimum Spanning Tree using Kruskal's algorithm for the same graph:</p>
+            
+            <div class="graph-diagram">
+                Weighted Edges:<br>
+                A-B: 4, A-C: 3<br>
+                B-C: 1, B-D: 2<br>
+                C-D: 4, D-E: 2<br>
+                C-E: 5
+            </div>
+
+            <h3>Solution:</h3>
+            <table>
+                <tr>
+                    <th>Step</th>
+                    <th>Edge</th>
+                    <th>Weight</th>
+                    <th>Action</th>
+                    <th>Sets</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>B-C</td>
+                    <td>1</td>
+                    <td>Accept (no cycle)</td>
+                    <td>{A}, {B,C}, {D}, {E}</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>B-D</td>
+                    <td>2</td>
+                    <td>Accept (no cycle)</td>
+                    <td>{A}, {B,C,D}, {E}</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>D-E</td>
+                    <td>2</td>
+                    <td>Accept (no cycle)</td>
+                    <td>{A}, {B,C,D,E}</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>A-C</td>
+                    <td>3</td>
+                    <td>Accept (no cycle)</td>
+                    <td>{A,B,C,D,E}</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>A-B</td>
+                    <td>4</td>
+                    <td>Reject (creates cycle)</td>
+                    <td>{A,B,C,D,E}</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>C-D</td>
+                    <td>4</td>
+                    <td>Reject (creates cycle)</td>
+                    <td>{A,B,C,D,E}</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>C-E</td>
+                    <td>5</td>
+                    <td>Reject (creates cycle)</td>
+                    <td>{A,B,C,D,E}</td>
+                </tr>
+            </table>
+            
+            <div class="result">MST Edges: B-C(1), B-D(2), D-E(2), A-C(3) | Total Cost: 8</div>
+            
+            <p><strong>Note:</strong> Both Prim's and Kruskal's algorithms produce the same MST cost (8), but may select different edges in different order while achieving the same optimal result.</p>
+        </div>
+    </div>
+</body>
+</html>
