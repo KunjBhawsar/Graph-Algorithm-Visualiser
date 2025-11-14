@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer - Professional Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f4f6f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #080032;
+            border-bottom: 1px solid #e9ecef;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .header h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            background-color: #a3a3cc;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .welcome-section h2 {
+            font-size: 2.5em;
+            color: #000000;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .welcome-section p {
+            font-size: 1.1em;
+            color: #19183B;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .algorithms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .algorithm-card {
+            background: #7878c1;
+            border-radius: 8px;
+            padding: 35px 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .algorithm-card:hover {
+            border-color: #19183B;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .algorithm-icon {
+            width: 100%;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            color: #080032;
+        }
+
+        .algorithm-card:hover .algorithm-icon {
+            background: #0b0040;
+            color: #ffffff;
+        }
+
+        .algorithm-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 10px;
+        }
+
+        .algorithm-description {
+            font-size: 0.9em;
+            color: #19183B;
+            line-height: 1.5;
+        }
+
+        .footer {
+            background: #ffffff;
+            border-top: 1px solid #e9ecef;
+            padding: 20px 40px;
+            text-align: center;
+            color: #ffffff;;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .header, .footer {
+                padding: 20px;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .welcome-section h2 {
+                font-size: 2em;
+            }
+
+            .algorithms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Graphixor</h1>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="welcome-section">
+                <h2>Graph Algorithm Visualizer</h2>
+                <p>Select an algorithm below to explore interactive visualizations of fundamental graph traversal and minimum spanning tree algorithms.</p>
+            </div>
+
+            <div class="algorithms-grid">
+                <div class="algorithm-card" onclick="selectAlgorithm('BFS')">
+                    <div class="algorithm-icon">BFS</div>
+                    <div class="algorithm-name">Breadth-First Search</div>
+                    <div class="algorithm-description">Level-order graph traversal exploring nodes by distance</div>
+                </div>
+
+                <div class="algorithm-card" onclick="selectAlgorithm('DFS')">
+                    <div class="algorithm-icon">DFS</div>
+                    <div class="algorithm-name">Depth-First Search</div>
+                    <div class="algorithm-description">Deep exploration traversal going as far as possible</div>
+                </div>
+
+                <div class="algorithm-card" onclick="selectAlgorithm('Prim')">
+                    <div class="algorithm-icon">Prim's Algorithm</div>
+                    <div class="algorithm-name">Prim's Algorithm</div>
+                    <div class="algorithm-description">Greedy MST algorithm growing tree from a vertex</div>
+                </div>
+
+                <div class="algorithm-card" onclick="selectAlgorithm('Kruskal')">
+                    <div class="algorithm-icon">Kruskal's Algorithm</div>
+                    <div class="algorithm-name">Kruskal's Algorithm</div>
+                    <div class="algorithm-description">Edge-based MST using union-find data structure</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"></footer>
+
+    <script>
+        function selectAlgorithm(algo) {
+    if (algo === "BFS") {
+        window.location.href = "bfs.html";   // redirect to BFS visualizer
+    } else if (algo === "DFS") {
+        window.location.href = "dfs.html";   // redirect to DFS visualizer
+    } else if (algo === "Prim") {
+        window.location.href = "prim.html";  // you can create prim.html later
+    } else if (algo === "Kruskal") {
+        window.location.href = "kruskal.html"; // same here
+    }
+}
+
+    </script>
+</body>
+</html>
