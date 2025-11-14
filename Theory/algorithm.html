@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Details - Algorithm Visualizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #a3a3cc;
+            color: #222;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background:#a5a5c9;
+            padding: 20px 12px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        #sidebar h3 {
+            margin-bottom: 16px;
+            color: #000000;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #sidebar h3:hover {
+            color: #5c5c99;
+        }
+
+        #sidebar button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background:#292966;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        #sidebar button:hover {
+            background: #5c5c99;
+        }
+
+        #container {
+            margin-left: 240px;
+            max-width: 1200px;
+        }
+
+        .content-section {
+            margin: 18px 0;
+            padding: 24px;
+            background: #ceceeb;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            color: #000000;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #292966;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .algorithm-box {
+            background: #f8f9fa;
+            border-left: 4px solid #292966;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .complexity {
+            background: #e7f3ff;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h3 onclick="window.location.href='index.html'">Home</h3>
+        <button onclick="window.location.href='bfs.html'">BFS</button>
+        <button onclick="window.location.href='dfs.html'">DFS</button>
+        <button onclick="window.location.href='prim.html'">Prim's Algorithm</button>
+        <button onclick="window.location.href='kruskal.html'">Kruskal's Algorithm</button>
+    </div>
+
+    <div id="container">
+        <div class="content-section">
+            <h1>Algorithm Details</h1>
+
+            <h2>1. Breadth-First Search (BFS)</h2>
+            <p>BFS is a graph traversal algorithm that explores vertices in order of their distance from the source vertex. It uses a queue data structure to keep track of vertices to visit next.</p>
+            
+            <h3>How it Works:</h3>
+            <div class="algorithm-box">
+                <ol>
+                    <li>Start at the source vertex and mark it as visited</li>
+                    <li>Enqueue the source vertex</li>
+                    <li>While the queue is not empty:
+                        <ul>
+                            <li>Dequeue a vertex</li>
+                            <li>For each unvisited neighbor:
+                                <ul>
+                                    <li>Mark it as visited</li>
+                                    <li>Enqueue it</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="complexity">
+                <strong>Time Complexity:</strong> O(V + E) where V is vertices and E is edges<br>
+                <strong>Space Complexity:</strong> O(V)
+            </div>
+
+            <h3>Applications:</h3>
+            <ul>
+                <li>Finding shortest path in unweighted graphs</li>
+                <li>Level order traversal of trees</li>
+                <li>Web crawlers</li>
+                <li>Social networking connections</li>
+            </ul>
+
+            <h2>2. Depth-First Search (DFS)</h2>
+            <p>DFS explores as far as possible along each branch before backtracking. It uses a stack (or recursion) to keep track of vertices.</p>
+            
+            <h3>How it Works:</h3>
+            <div class="algorithm-box">
+                <ol>
+                    <li>Start at the source vertex and mark it as visited</li>
+                    <li>For each unvisited neighbor:
+                        <ul>
+                            <li>Recursively visit that neighbor</li>
+                        </ul>
+                    </li>
+                    <li>Backtrack when no unvisited neighbors exist</li>
+                </ol>
+            </div>
+
+            <div class="complexity">
+                <strong>Time Complexity:</strong> O(V + E)<br>
+                <strong>Space Complexity:</strong> O(V) for recursion stack
+            </div>
+
+            <h3>Applications:</h3>
+            <ul>
+                <li>Detecting cycles in graphs</li>
+                <li>Topological sorting</li>
+                <li>Finding strongly connected components</li>
+                <li>Maze solving</li>
+            </ul>
+
+            <h2>3. Prim's Algorithm</h2>
+            <p>Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. It starts with a single vertex and grows the MST one edge at a time.</p>
+            
+            <h3>How it Works:</h3>
+            <div class="algorithm-box">
+                <ol>
+                    <li>Start with any vertex and add it to MST</li>
+                    <li>Add all edges from this vertex to the priority queue</li>
+                    <li>While MST doesn't contain all vertices:
+                        <ul>
+                            <li>Extract minimum weight edge from priority queue</li>
+                            <li>If the edge connects to a new vertex:
+                                <ul>
+                                    <li>Add the edge to MST</li>
+                                    <li>Add the new vertex to MST</li>
+                                    <li>Add all edges from new vertex to priority queue</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="complexity">
+                <strong>Time Complexity:</strong> O(E log V) with binary heap<br>
+                <strong>Space Complexity:</strong> O(V)
+            </div>
+
+            <h3>Applications:</h3>
+            <ul>
+                <li>Network design (laying cables, pipes)</li>
+                <li>Approximation algorithms for NP-hard problems</li>
+                <li>Cluster analysis</li>
+            </ul>
+
+            <h2>4. Kruskal's Algorithm</h2>
+            <p>Kruskal's algorithm is a greedy algorithm that finds a minimum spanning tree by sorting all edges and adding them one by one if they don't form a cycle.</p>
+            
+            <h3>How it Works:</h3>
+            <div class="algorithm-box">
+                <ol>
+                    <li>Sort all edges by weight in ascending order</li>
+                    <li>Initialize a disjoint-set (Union-Find) for all vertices</li>
+                    <li>For each edge in sorted order:
+                        <ul>
+                            <li>If the edge connects two different sets:
+                                <ul>
+                                    <li>Add the edge to MST</li>
+                                    <li>Union the two sets</li>
+                                </ul>
+                            </li>
+                            <li>Otherwise, skip it (would create a cycle)</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="complexity">
+                <strong>Time Complexity:</strong> O(E log E) or O(E log V)<br>
+                <strong>Space Complexity:</strong> O(V)
+            </div>
+
+            <h3>Applications:</h3>
+            <ul>
+                <li>Network design optimization</li>
+                <li>Circuit design</li>
+                <li>Transportation networks</li>
+            </ul>
+
+            <h3>Key Data Structure - Union-Find:</h3>
+            <p>Union-Find (Disjoint Set Union) efficiently tracks which vertices are in the same connected component:</p>
+            <ul>
+                <li><strong>Find:</strong> Determine which set a vertex belongs to (with path compression)</li>
+                <li><strong>Union:</strong> Merge two sets (with union by rank)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
