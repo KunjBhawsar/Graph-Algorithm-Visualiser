@@ -1,0 +1,460 @@
+/* Base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #a3a3cc;
+    color: #222;
+}
+
+#container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Panels */
+#intro,
+#input-form,
+#viz,
+#steps-panel,
+#pq-history-panel {
+    margin: 18px 0;
+    padding: 18px;
+    background: #ceceeb;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    width: 100%;
+}
+
+h1,
+h2 {
+    color: #000000;
+    margin: 4px 0 12px;
+}
+
+label {
+    display: block;
+    margin: 8px 0;
+    font-weight: 600;
+}
+
+input[type="number"],
+select,
+input[type="range"] {
+    padding: 6px 8px;
+    margin-left: 8px;
+    border-radius: 6px;
+    border: 1px solid #292966;
+}
+
+button {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 12px;
+    margin: 6px 6px 0 0;
+    background: #292966;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    font-size: 16px;
+    font-weight: 600;
+    background: #a3a3cc;
+    color: #292966;
+}
+
+#graph-svg {
+    display: block;
+    margin: 12px auto;
+    margin-bottom: -250px;
+    background: #fafafa;
+    border-radius: 8px;
+    width: 100%;
+    border: 1px solid #e6e9ef;
+}
+
+/* Nodes & edges */
+.node circle {
+    stroke: #000000;
+    stroke-width: 1.5px;
+    cursor: move;
+    transition: fill 0.12s ease;
+}
+
+.node text {
+    font-weight: 700;
+    font-size: 13px;
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: #ffffff;
+}
+
+.edge-path {
+    stroke: #9aa0a6;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.edge-path.mst {
+    stroke: #088a3a;
+    stroke-width: 4px;
+}
+
+.edge-weight {
+    font-size: 14px;
+    font-weight: bold;
+    fill: #ffffff;
+    stroke: #000000;
+    stroke-width: 3px;
+    paint-order: stroke;
+    pointer-events: none;
+}
+
+/* Controls */
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #ceceeb;
+    border-radius: 8px;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 25px auto;
+    margin: 70px auto;
+    box-sizing: border-box;
+}
+
+#controls button {
+    padding: 6px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #292966;
+    color: white;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+#controls button:hover {
+    background: #a3a3cc;
+    color: #292966;
+}
+
+#controls label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+#controls input[type="range"] {
+    flex: 1 1 150px;
+    min-width: 100px;
+    max-width: 300px;
+}
+
+/* Steps panel */
+#step-text {
+    min-height: 200px;
+    max-height: 360px;
+    overflow-y: auto;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fbfdff;
+    border: 1px solid #e7eefc;
+    white-space: pre-line;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#final-order {
+    background: #292966;
+    border: 1px solid #ccccff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+/* Edge input styling */
+#edge-list .edge-input {
+    margin: 8px 0;
+    padding: 8px;
+    background: #f5f7fb;
+    border-radius: 6px;
+    border: 1px solid #e9eef8;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#edge-list input {
+    width: 56px;
+    text-align: center;
+}
+
+#viz {
+    position: relative;
+    height: 785px;
+}
+
+#legend {
+    bottom: 12px;
+    left: 12px;
+    width: 140px;
+    background: rgba(204, 204, 255, 0.9);
+    border: 1px solid #292966;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    z-index: 10;
+    margin-top: 115px;
+    margin-left: 12px;
+}
+
+#legend h4 {
+    margin: 0 0 6px 0;
+    font-size: 15px;
+    text-align: left;
+}
+
+.legend-box {
+    margin-top: 2px;
+    margin-bottom: 0px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    border: 1px solid #444;
+    vertical-align: middle;
+}
+
+.legend-box.inmst {
+    background-color: #088a3a;
+}
+
+.legend-box.current {
+    background-color: #e9e218;
+}
+
+.legend-box.notinmst {
+    background-color: #292966;
+}
+
+.legend-box.mstedge {
+    background-color: #088a3a;
+}
+
+/* Priority Queue Display (top right) - HORIZONTAL LAYOUT */
+#priority-queue-container {
+    position: absolute;
+    top: 45px;
+    right: 33px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    z-index: 10;
+    max-width: 600px;
+    overflow-x: auto;
+    background: rgba(204, 204, 255, 0.95);
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #292966;
+}
+
+.pq-item {
+    width: 140px;
+    height: 50px;
+    border: 1px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #333;
+    background-color: #7878c1;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+}
+
+.pq-item.empty {
+    background-color: #ffffff;
+    border: 1px dashed #cccccc;
+}
+
+/* Priority Queue History Panel */
+#pq-history-panel {
+    margin-top: 20px;
+}
+
+#pq-history-container {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #fbfdff;
+    border: 1px solid #e7eefc;
+    border-radius: 8px;
+}
+
+.history-step {
+    margin-bottom: 20px;
+    padding: 12px;
+    background: #ceceeb;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.history-step-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #292966;
+    font-size: 14px;
+}
+
+.history-pq-display {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    flex-wrap: nowrap;
+}
+
+.history-pq-item {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    color: #333;
+    background-color: #7878c1;
+    flex-shrink: 0;
+}
+
+.history-pq-item.empty {
+    background-color: #ffffff;
+    border: 1px dashed #cccccc;
+}
+
+/* Custom slider styling for full fill */
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 150px;
+    height: 8px;
+    background: #ddd;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 0;
+    width: 0;
+    border-radius: 50%;
+    background: #292966;
+    border: 0px solid #333;
+    margin-top: -5px;
+    margin-left: -15px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+}
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: #a5a5c9;
+    padding: 20px 12px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+}
+
+#sidebar h3 {
+    margin-bottom: 16px;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+#sidebar button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #292966;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+#sidebar button:hover {
+    background: #5c5c99;
+}
+
+#container {
+    margin-left: 240px;
+    background-color: #a3a3cc;
+}
+
+/* Navigation Buttons */
+#nav-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: left;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    margin: 18px 0;
+    padding: 18px;
+    background: #ceceeb;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#nav-buttons button {
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #292966;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#nav-buttons button:hover {
+    background: #a3a3cc;
+    color: #292966;
+}
+
+#nav-buttons button:active {
+    background: #292966;
+    color: #a3a3cc;
+}
