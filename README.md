@@ -55,5 +55,5 @@ The project depends on the original file structure to work correctly.
 
 # License
 
-This project is open-source and available for free use.
+ This project is open-source and available for free use.
 You are welcome to modify, enhance, or redistribute it for personal, educational, or experimental purposes.
