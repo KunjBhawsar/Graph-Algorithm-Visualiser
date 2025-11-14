@@ -42,7 +42,8 @@ JavaScript
 (Or use git clone if you prefer)
 
 #### 2. Keep all file names exactly as they are
- Do not rename or modify any file or folder.
+ Do not rename or modify any file.
+ Make sure all the files in respective folders to be saved in a single project folder only.
 The project depends on the original file structure to work correctly.
 
 #### 3. Open the Project
