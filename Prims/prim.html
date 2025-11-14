@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Prim's Algorithm Visualizer</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="prim_styles.css" />
+</head>
+
+<body>
+    <div id="sidebar">
+        <h3 onclick="window.location.href='welcome.html'" style="cursor: pointer;">Home</h3>
+        <button onclick="window.location.href='bfs.html'">BFS</button>
+        <button onclick="window.location.href='dfs.html'">DFS</button>
+        <button onclick="window.location.href='prim.html'">Prim's Algorithm</button>
+        <button onclick="window.location.href='kruskal.html'">Kruskal's Algorithm</button>
+    </div>
+    <div id="container">
+        <div id="intro">
+            <h1>Interactive Prim's Algorithm MST Visualizer</h1>
+        </div>
+
+        <div id="nav-buttons">
+            <button onclick="window.location.href='algorithm.html'">Algorithm</button>
+            <button onclick="window.location.href='example.html'">Example</button>
+            <button onclick="window.location.href='prim.html'">Visualizer</button>
+        </div>
+
+        <div id="input-form">
+            <h2>Create/Edit Your Graph</h2>
+            <label>Number of Nodes (1–20):
+                <input id="num-nodes" type="number" min="1" max="20" value="4">
+                <button onclick="generateNodes()">Generate Nodes</button>
+            </label>
+            <label>Select Start Node:
+                <select id="start-node"></select>
+            </label>
+            <div id="edges-input">
+                <h3>Edges (add manually with weights)</h3>
+                <div id="edge-list"></div>
+                <button onclick="addEdgeInput()">Add Edge</button>
+            </div>
+            <div style="margin-top:12px;">
+                <button onclick="buildGraph()">Build & Run</button>
+                <button onclick="clearGraph()">Clear</button>
+            </div>
+        </div>
+
+        <div id="viz">
+            <svg id="graph-svg" width="900" height="600">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"
+                        fill="black">
+                        <polygon points="0 0, 10 3.5, 0 7" />
+                    </marker>
+                </defs>
+            </svg>
+
+            <div id="legend">
+                <h4>Legend</h4>
+                <div><span class="legend-box notinmst"></span> Not in MST</div>
+                <div><span class="legend-box inmst"></span> In MST</div>
+                <div><span class="legend-box current"></span> Current Node</div>
+                <div><span class="legend-box mstedge"></span> MST Edge</div>
+            </div>
+
+            <div id="priority-queue-container" style="display: none;"></div>
+            <div id="controls">
+                <button id="play-pause" onclick="playPause()">Play</button>
+                <button onclick="stepForward()">Step Forward</button>
+                <button onclick="stepBackward()">Step Backward</button>
+                <label>
+                    Speech rate:
+                    <input id="speech-rate" type="range" min="1" max="2" step="0.1" value="1"
+                        oninput="document.getElementById('sr-val').textContent = this.value + 'x'; updateSliderFill(this)">
+                    <span id="sr-val">1x</span>
+                </label>
+            </div>
+
+        </div>
+
+        <div id="steps-panel">
+            <h2>Step-by-Step Description</h2>
+            <div id="step-text"></div>
+            <div id="final-order" style="margin-top:10px; font-weight:bold;"></div>
+        </div>
+
+        <div id="pq-history-panel">
+            <h2>Priority Queue History</h2>
+            <div id="pq-history-container"></div>
+        </div>
+    </div>
+    <script src="prim_script.js"></script>
+</body>
+
+</html>
