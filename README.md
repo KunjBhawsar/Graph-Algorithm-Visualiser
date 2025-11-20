@@ -4,7 +4,7 @@ Graphixor is an interactive Graph Algorithm Visualizer tool that visually demons
 You can create nodes, connect edges, and watch algorithms like BFS, DFS, and Minimum Spanning Tree run in real time.
 This project helps beginners, students, and developers clearly understand graph traversal and shortest-path techniques.
 
-# 🚀 Live Demo: https://graphixor-graph-algo.web.app
+# 🔗 Live Demo: https://graphixor-graph-algo.web.app
 
 # Features
 
