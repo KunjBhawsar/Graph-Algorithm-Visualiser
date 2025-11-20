@@ -45,6 +45,8 @@ JavaScript
  Do not rename or modify any file.
  Make sure all the files in respective folders to be saved in a single project folder only.
 The project depends on the original file structure to work correctly.
+<img width="809" height="597" alt="image" src="https://github.com/user-attachments/assets/8137eaa4-5ef6-48ef-8f93-378b5d8b6c76" />
+
 
 #### 3. Open the Project
  Locate the file named welcome.html inside the project folder.
